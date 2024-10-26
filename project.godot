@@ -1,0 +1,27 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Advanced Billboard"
+config/description="AdvancedBillboard allows for more advanced Y axis billboarding in 3d space"
+config/version="1.0.0.0"
+run/main_scene="res://addons/examples/magic_balls/magic_spheres.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+config/icon="res://addons/advanced_billboard/advanced_billboard.png"
+
+[editor_plugins]
+
+enabled=PackedStringArray()
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
