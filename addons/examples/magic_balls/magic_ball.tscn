@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://jv1ycp5de8"]
+
+[ext_resource type="Texture2D" uid="uid://m7hihr7he1yn" path="res://addons/examples/magic_balls/magicball.svg" id="1_u11fl"]
+[ext_resource type="Script" path="res://addons/advanced_billboard/advanced_billboard.gd" id="2_0bl7x"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cabou"]
+friction = 0.5
+bounce = 0.75
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_grx8e"]
+radius = 2.48012
+
+[node name="MagicBall" type="RigidBody3D"]
+transform = Transform3D(0.505986, -0.56536, -0.651419, 0, 0.755232, -0.655458, 0.862542, 0.331652, 0.382137, 0, 0, 0)
+mass = 100.0
+physics_material_override = SubResource("PhysicsMaterial_cabou")
+
+[node name="Billboard" type="Sprite3D" parent="."]
+transform = Transform3D(-0.0305198, -0.479202, -0.877174, 0.655152, 0.653188, -0.379633, 0.75488, -0.586269, 0.294015, 0, 0, 0)
+texture = ExtResource("1_u11fl")
+script = ExtResource("2_0bl7x")
+physics_update = true
+direction_textures = Array[Texture2D]([ExtResource("1_u11fl")])
+look_paralel = true
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_grx8e")

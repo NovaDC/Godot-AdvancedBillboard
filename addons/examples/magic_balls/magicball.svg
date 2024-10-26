@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="magicball.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     inkscape:zoom="1.5625"
+     inkscape:cx="255.68"
+     inkscape:cy="256"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="329"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient4"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop5" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop6" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4"
+       id="linearGradient6"
+       x1="294.43845"
+       y1="25.342573"
+       x2="271.37537"
+       y2="142.8448"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.99900014,0,0,1.7320524,0.25596404,-1.6546655)" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <ellipse
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.516;stroke-linejoin:round;paint-order:stroke fill markers"
+       id="ellipse6"
+       cx="253.12"
+       cy="253.75999"
+       rx="251.84"
+       ry="250.56" />
+    <path
+       id="rect1"
+       style="fill:url(#linearGradient6);fill-opacity:1;stroke:none;stroke-width:2.11854;stroke-linejoin:round;paint-order:stroke fill markers"
+       d="M 253.11914 3.1992188 A 251.84 250.56 0 0 0 2.2207031 240.66992 L 2.2207031 266.84961 A 251.84 250.56 0 0 0 7.8046875 307.53906 L 498.43359 307.53906 A 251.84 250.56 0 0 0 504.96094 253.75977 A 251.84 250.56 0 0 0 253.11914 3.1992188 z " />
+  </g>
+</svg>
