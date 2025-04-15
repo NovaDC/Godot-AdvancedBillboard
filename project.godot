@@ -14,7 +14,7 @@ config/name="Advanced Billboard"
 config/description="AdvancedBillboard allows for more advanced Y axis billboarding in 3d space"
 config/version="1.0.0.0"
 run/main_scene="res://addons/examples/magic_balls/magic_spheres.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://addons/advanced_billboard/advanced_billboard.png"
 
 [editor_plugins]

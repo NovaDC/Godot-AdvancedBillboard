@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://jv1ycp5de8"]
 
 [ext_resource type="Texture2D" uid="uid://m7hihr7he1yn" path="res://addons/examples/magic_balls/magicball.svg" id="1_u11fl"]
-[ext_resource type="Script" path="res://addons/advanced_billboard/advanced_billboard.gd" id="2_0bl7x"]
+[ext_resource type="Script" uid="uid://cqom3nyky4hcx" path="res://addons/advanced_billboard/advanced_billboard.gd" id="2_0bl7x"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cabou"]
 friction = 0.5
