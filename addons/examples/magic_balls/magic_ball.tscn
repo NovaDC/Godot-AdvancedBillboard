@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://jv1ycp5de8"]
+[gd_scene load_steps=6 format=3 uid="uid://jv1ycp5de8"]
 
 [ext_resource type="Texture2D" uid="uid://m7hihr7he1yn" path="res://addons/examples/magic_balls/magicball.svg" id="1_u11fl"]
 [ext_resource type="Script" path="res://addons/advanced_billboard/advanced_billboard.gd" id="2_0bl7x"]
@@ -6,6 +6,10 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cabou"]
 friction = 0.5
 bounce = 0.75
+
+[sub_resource type="SphereMesh" id="SphereMesh_yqhlk"]
+radius = 2.5
+height = 5.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_grx8e"]
 radius = 2.48012
@@ -16,12 +20,19 @@ mass = 100.0
 physics_material_override = SubResource("PhysicsMaterial_cabou")
 
 [node name="Billboard" type="Sprite3D" parent="."]
-transform = Transform3D(-0.0305198, -0.479202, -0.877174, 0.655152, 0.653188, -0.379633, 0.75488, -0.586269, 0.294015, 0, 0, 0)
+transform = Transform3D(0.962249, 0, 0, 0, 0.962249, 0, 0, 0, 0.962248, 0, 0, 0)
+double_sided = false
 texture = ExtResource("1_u11fl")
 script = ExtResource("2_0bl7x")
 physics_update = true
 direction_textures = Array[Texture2D]([ExtResource("1_u11fl")])
-look_paralel = true
+look_opposite = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Billboard"]
+transform = Transform3D(1, -4.47035e-08, -2.98023e-08, -1.49012e-08, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 0, 0)
+cast_shadow = 3
+mesh = SubResource("SphereMesh_yqhlk")
+skeleton = NodePath("../..")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_grx8e")
