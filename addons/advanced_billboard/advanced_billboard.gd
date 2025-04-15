@@ -38,7 +38,8 @@ enum LOCK_AXIS_MASK{
 ## Offset the rotation of the billboard from it's [member point_target].
 @export var offset_degrees:Vector3 = Vector3.ZERO
 ## The node the billboard should face. When [code]null[/code],
-## the rotation of this billboard will not change.
+## the target will be presumed to be at active camera in the viewport if any,
+## not changing rotation at all if also null.
 @export var point_target:Node3D = null
 ## A bitset (with each bit's place value corelating to [enum LOCK_AXIS_MASK])
 ## that when set will force that axis of rotation of the billboard to snap parallel
@@ -47,6 +48,8 @@ enum LOCK_AXIS_MASK{
 ## Instead of looking directly at the targeted node's position, face parallel to it,
 ## in the oppsite direction. For more convincing orthographic effects.
 @export var look_parallel:bool = false
+## Looks to the opposite of the appropate direction. Usefull when fliping sprites.
+@export var look_opposite:bool = false
 
 @export_subgroup("Editor")
 ## When [code]true[/code] the rotation of the billboard in editor
@@ -108,34 +111,56 @@ func _validate_property(property: Dictionary):
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func _physics_process(_delta: float) -> void:
-	if advanced_billboard_enable and physics_update and not Engine.is_editor_hint():
-		__update()
+	if advanced_billboard_enable and physics_update:
+		_billboard_update()
 
 func _process(_delta: float) -> void:
-	if advanced_billboard_enable and (not physics_update or (editor_direction_override and Engine.is_editor_hint())):
-		__update()
+	if advanced_billboard_enable and not physics_update:
+		_billboard_update()
+
+## Returns a [Node3D] (if any) that this billboard would use
+## when determining where to face, if any.
+func get_target_node() -> Node3D:
+	if Engine.is_editor_hint() and editor_direction_override:
+		if editor_point_to_camera_viewport_idx >= 0:
+			return EditorInterface.get_editor_viewport_3d(editor_point_to_camera_viewport_idx
+															).get_camera_3d()
+		return editor_point_target if editor_point_target != null else get_viewport().get_camera_3d()
+	if point_target != null:
+		return point_target
+	var vp := get_viewport()
+	if vp != null:
+		return vp.get_camera_3d()
+	return null
 
 # Update the billboard's rotation and texture, called internally by either
 # [member Node._process] or [member Node._physics_process].
-func __update():
-	var look_point:Vector3 = Vector3.ZERO
-	if Engine.is_editor_hint() and editor_direction_override and editor_point_to_camera_viewport_idx >= 0:
-		var look_node := EditorInterface.get_editor_viewport_3d(editor_point_to_camera_viewport_idx).get_camera_3d()
-		look_point = look_node.global_position if not look_parallel else global_position + (look_node.transform.basis.z)
-	elif Engine.is_editor_hint() and editor_direction_override and editor_point_target != null:
-		look_point = editor_point_target.global_position
-	else:
-		look_point = point_target.global_position if not look_parallel else global_position + (point_target.transform.basis.z)
+func _billboard_update():
+	var current_point_target := get_target_node()
+	var look_point := global_position
 	
-	if (lock_axis & LOCK_AXIS_MASK.X > 0):
-		look_point.x = global_position.x
-	if (lock_axis & LOCK_AXIS_MASK.Y > 0):
-		look_point.y = global_position.y
-	if (lock_axis & LOCK_AXIS_MASK.Z > 0):
-		look_point.z = global_position.z
-	
-	if look_point != global_position:
-		look_at(look_point)
-		rotation_degrees += offset_degrees
-	
+	if current_point_target != null:
+		if not look_parallel:
+			look_point = current_point_target.global_position
+		else:
+			look_point = global_position + (current_point_target.transform.basis.z)
+
+		if (lock_axis & LOCK_AXIS_MASK.X > 0):
+			look_point.x = global_position.x
+		if (lock_axis & LOCK_AXIS_MASK.Y > 0):
+			look_point.y = global_position.y
+		if (lock_axis & LOCK_AXIS_MASK.Z > 0):
+			look_point.z = global_position.z
+
+		if look_point != global_position:
+			look_at(look_point, Vector3.UP, look_opposite)
+			rotation_degrees += offset_degrees
+
 	texture = get_face_texture(global_rotation_degrees)
+
+func _exit_tree() -> void:
+	if Engine.is_editor_hint() and editor_direction_override:
+		rotation = Vector3.ZERO
+		# No need to save this if we always automatically change it every save.
+		# Plus it will decrease spamy changed to the rotation of this object that
+		# might show up in version control systems sometimes...
