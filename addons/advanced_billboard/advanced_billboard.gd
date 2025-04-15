@@ -22,8 +22,12 @@ enum LOCK_AXIS_MASK{
 		if _value != advanced_billboard_enable:
 			if not _value:
 				texture = direction_textures[0] if direction_textures.size() > 0 else null
+				if _occluder_ref != null:
+					_occluder_ref.visible = false
 			elif _value and Engine.is_editor_hint() and direction_textures == [] and texture != null:
 				direction_textures = [texture]
+				if _occluder_ref != null and occlusion_radius > 0:
+					_occluder_ref.visible = true
 		advanced_billboard_enable = _value
 		notify_property_list_changed()
 
@@ -33,6 +37,29 @@ enum LOCK_AXIS_MASK{
 ## A array of textures to map to a specific range of rotations in the y axis.[br]
 ## Use [member offset_degrees.y] to change where the 0th texture is centered towards.
 @export var direction_textures:Array[Texture2D] = []
+## The radius that this sprite will occlude other 3d objects bedind it.[br]
+## The occlusion area is a sphere with a radius of [member occlusion_radius].
+## Therefor it is suggested to keep this to the smallest opaque radius of the sprite
+## compared to its center of rotation.[br]
+## As with any other [Occluder3D]s, frequently moving a sprite with this enabled
+## may result in a loss in performance rather than a gain.
+## This is only advised to be used when this billboard will remain relatively static,
+## both in position and rotation.
+@export var occlusion_radius:float = 0:
+	get:
+		return occlusion_radius
+	set(_value):
+		occlusion_radius = _value
+		if _value > 0:
+			if _occluder_ref == null:
+				_occluder_ref = OccluderInstance3D.new()
+				add_child(_occluder_ref)
+			_occluder_ref.occluder = SphereOccluder3D.new()
+			_occluder_ref.visible = true
+			_occluder_ref.occluder.radius = occlusion_radius
+		elif _occluder_ref != null:
+			_occluder_ref.visible = false
+var _occluder_ref:OccluderInstance3D = null
 
 @export_group("Rotation")
 ## Offset the rotation of the billboard from it's [member point_target].
@@ -48,7 +75,7 @@ enum LOCK_AXIS_MASK{
 ## Instead of looking directly at the targeted node's position, face parallel to it,
 ## in the oppsite direction. For more convincing orthographic effects.
 @export var look_parallel:bool = false
-## Looks to the opposite of the appropate direction. Usefull when fliping sprites.
+## Looks to the opposite of the appropriate direction. Usefull when flipping sprites.
 @export var look_opposite:bool = false
 
 @export_subgroup("Editor")
@@ -98,6 +125,9 @@ func _get(property: StringName) -> Variant:
 	if property == "billboard" and advanced_billboard_enable:
 		return BaseMaterial3D.BillboardMode.BILLBOARD_DISABLED
 	return null
+
+func _ready() -> void:
+	occlusion_radius = occlusion_radius
 
 func _validate_property(property: Dictionary):
 	match(property.name):

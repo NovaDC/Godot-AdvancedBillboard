@@ -25,7 +25,7 @@ albedo_texture = SubResource("GradientTexture1D_5vgls")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3lv7h"]
 material = SubResource("StandardMaterial3D_hgdfr")
-size = Vector2(200, 200)
+size = Vector2(500, 500)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cx1mb"]
 albedo_color = Color(0, 1, 0, 1)
@@ -62,7 +62,6 @@ dof_blur_far_enabled = true
 dof_blur_near_enabled = true
 
 [node name="Root" type="Node3D"]
-transform = Transform3D(0.560849, 0, 0, 0, 0.560849, 0, 0, 0, 0.560849, 0, 0, 0)
 
 [node name="Black 1" parent="." instance=ExtResource("1_145le")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.81508, 24.1923, -38.4707)
@@ -70,7 +69,7 @@ linear_velocity = Vector3(0.00486625, 3.59178, -0.0114402)
 angular_velocity = Vector3(-0.00461309, 9.12505e-10, -0.00196216)
 
 [node name="Billboard" parent="Black 1" index="0"]
-transform = Transform3D(0.302894, -0.0643968, 0.950846, 0, 0.997714, 0.067571, -0.953024, -0.0204668, 0.302202, 0, 0, 0)
+transform = Transform3D(0.843505, 0.092607, -0.529078, 0, 0.985024, 0.172414, 0.537121, -0.145432, 0.830873, 0, 0, 0)
 editor_direction_override = false
 
 [node name="Black 2" parent="." instance=ExtResource("1_145le")]
@@ -79,7 +78,7 @@ linear_velocity = Vector3(4.17453e-07, 3.13675e-05, 1.54859e-06)
 angular_velocity = Vector3(-3.11186e-06, 2.77135e-07, 5.76111e-06)
 
 [node name="Billboard" parent="Black 2" index="0"]
-transform = Transform3D(0.263359, -0.024793, 0.964379, 0, 0.999669, 0.0257003, -0.964699, -0.00676838, 0.263271, 0, 0, 0)
+transform = Transform3D(0.849661, 0.0739165, -0.522124, 0, 0.990126, 0.140171, 0.527331, -0.119098, 0.841271, 0, 0, 0)
 editor_direction_override = false
 
 [node name="Black 3" parent="." instance=ExtResource("1_145le")]
@@ -89,7 +88,35 @@ linear_velocity = Vector3(-0.0861222, 7.57128e-05, 0.00136663)
 angular_velocity = Vector3(0.000549598, 0.00844126, 0.0347285)
 
 [node name="Billboard" parent="Black 3" index="0"]
-transform = Transform3D(0.231298, -0.0667567, 0.97059, 0, 0.997642, 0.0686174, -0.972883, -0.0158711, 0.230753, 0, 0, 0)
+transform = Transform3D(0.834733, 0.102687, -0.540995, 0, 0.982457, 0.186482, 0.550654, -0.155662, 0.820091, 0, 0, 0)
+editor_direction_override = false
+
+[node name="Black 4" parent="." instance=ExtResource("1_145le")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2845, 36.481, -38.4707)
+linear_velocity = Vector3(0.00486625, 3.59178, -0.0114402)
+angular_velocity = Vector3(-0.00461309, 9.12505e-10, -0.00196216)
+
+[node name="Billboard" parent="Black 4" index="0"]
+transform = Transform3D(0.89916, 0.0421645, -0.435584, 0, 0.995347, 0.0963496, 0.437619, -0.0866337, 0.894977, 0, 0, 0)
+editor_direction_override = false
+
+[node name="Black 5" parent="." instance=ExtResource("1_145le")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.1641, 42.2902, -33.8082)
+linear_velocity = Vector3(4.17453e-07, 3.13675e-05, 1.54859e-06)
+angular_velocity = Vector3(-3.11186e-06, 2.77135e-07, 5.76111e-06)
+
+[node name="Billboard" parent="Black 5" index="0"]
+transform = Transform3D(0.906883, 0.0239726, -0.420702, 0, 0.99838, 0.05689, 0.421385, -0.0515925, 0.905412, 0, 0, 0)
+editor_direction_override = false
+
+[node name="Black 6" parent="." instance=ExtResource("1_145le")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.9544, 36.2707, -28.6348)
+sleeping = true
+linear_velocity = Vector3(-0.0861222, 7.57128e-05, 0.00136663)
+angular_velocity = Vector3(0.000549598, 0.00844126, 0.0347285)
+
+[node name="Billboard" parent="Black 6" index="0"]
+transform = Transform3D(0.895654, 0.0470828, -0.442252, 0, 0.994379, 0.105864, 0.444751, -0.094817, 0.890621, 0, 0, 0)
 editor_direction_override = false
 
 [node name="Blue 1" parent="." instance=ExtResource("1_145le")]
@@ -99,7 +126,7 @@ linear_velocity = Vector3(0, -0.048882, 0)
 angular_velocity = Vector3(5.12628e-19, 0, -8.9487e-12)
 
 [node name="Billboard" parent="Blue 1" index="0"]
-transform = Transform3D(0.0251809, 0.020809, 0.999466, 0, 0.999783, -0.0208156, -0.999683, 0.000524154, 0.0251754, 0, 0, 0)
+transform = Transform3D(0.686028, 0.0798417, -0.723181, 0, 0.99396, 0.109737, 0.727575, -0.0752825, 0.681885, 0, 0, 0)
 texture = ExtResource("2_ll74a")
 direction_textures = Array[Texture2D]([ExtResource("2_ll74a")])
 editor_direction_override = false
@@ -111,7 +138,7 @@ linear_velocity = Vector3(0, -1.18184, 0)
 angular_velocity = Vector3(6.35622e-19, 0, -1.10957e-11)
 
 [node name="Billboard" parent="Blue 2" index="0"]
-transform = Transform3D(-0.0428834, -0.0186855, 0.998905, 0, 0.999825, 0.0187027, -0.999079, 0.000802035, -0.0428759, 0, 0, 0)
+transform = Transform3D(0.654303, 0.11942, -0.746742, 0, 0.987453, 0.157914, 0.75623, -0.103324, 0.646094, 0, 0, 0)
 texture = ExtResource("2_ll74a")
 direction_textures = Array[Texture2D]([ExtResource("2_ll74a")])
 editor_direction_override = false
@@ -123,7 +150,7 @@ linear_velocity = Vector3(0, 0.113933, 0)
 angular_velocity = Vector3(5.40101e-19, 0, -9.4282e-12)
 
 [node name="Billboard" parent="Blue 3" index="0"]
-transform = Transform3D(0.098479, 0.0426015, 0.994226, 0, 0.999084, -0.0428095, -0.995138, 0.00421585, 0.0983888, 0, 0, 0)
+transform = Transform3D(0.73094, 0.0568915, -0.680064, 0, 0.99652, 0.0833646, 0.68244, -0.0609348, 0.728396, 0, 0, 0)
 texture = ExtResource("2_ll74a")
 direction_textures = Array[Texture2D]([ExtResource("2_ll74a")])
 editor_direction_override = false
@@ -149,7 +176,7 @@ mesh = SubResource("PlaneMesh_3lv7h")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.1086, 11.9254, 63.1801)
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Green 1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5291, 0, 8.52211)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5291, 0, 64.0009)
 layers = 3
 mesh = SubResource("BoxMesh_7htpa")
 
@@ -160,7 +187,7 @@ shape = SubResource("BoxShape3D_yr0lw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.2095, 11.9984, -61.2879)
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Green 2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48201, 0, -12.8248)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48201, 0, -53.1555)
 layers = 3
 mesh = SubResource("BoxMesh_7htpa")
 
@@ -171,6 +198,7 @@ shape = SubResource("BoxShape3D_yr0lw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.7451, 4.35122, 41.2229)
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Cyan 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 55.4788)
 layers = 3
 mesh = SubResource("BoxMesh_pyw1i")
 
@@ -181,6 +209,7 @@ shape = SubResource("BoxShape3D_yr0lw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.3046, 4.35122, -40.7105)
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Cyan 2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40.3307)
 layers = 3
 mesh = SubResource("BoxMesh_pyw1i")
 
@@ -191,6 +220,7 @@ shape = SubResource("BoxShape3D_yr0lw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.2573, 27.8835, -60.232)
 
 [node name="Mesh" type="MeshInstance3D" parent="World/Cyan 3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.52989, 1.48285, -53.816)
 layers = 3
 mesh = SubResource("BoxMesh_pyw1i")
 
@@ -198,14 +228,14 @@ mesh = SubResource("BoxMesh_pyw1i")
 shape = SubResource("BoxShape3D_yr0lw")
 
 [node name="welcometothe21stcentury" parent="World" instance=ExtResource("5_x1tpq")]
-transform = Transform3D(-8.74228e-07, 20, -8.74228e-07, 0, -8.74228e-07, -20, -20, -8.74228e-07, 3.82137e-14, -89.128, 18.6504, 1.56984)
+transform = Transform3D(-8.74228e-07, 20, -8.74228e-07, 0, -8.74228e-07, -20, -20, -8.74228e-07, 3.82137e-14, -105.354, 18.6504, 1.56984)
 
 [node name="CamRail" type="Path3D" parent="."]
 curve = SubResource("Curve3D_x1tpq")
 
 [node name="Dolly" type="PathFollow3D" parent="CamRail" node_paths=PackedStringArray("focus")]
-transform = Transform3D(0.0231144, -0.252279, 0.96722, 0, 0.967468, 0.252349, -0.999575, -0.00583376, 0.0223662, 129.354, 33.7486, 2.99121)
-progress = 218.817
+transform = Transform3D(0.724017, 0.268328, -0.635212, 0, 0.921027, 0.389076, 0.689559, -0.281736, 0.666954, -81.1314, 49.6941, 85.1855)
+progress = 771.173
 rotation_mode = 0
 tilt_enabled = false
 script = ExtResource("4_5vgls")
@@ -228,6 +258,9 @@ camera_attributes = SubResource("CameraAttributesPractical_x1tpq")
 [editable path="Black 1"]
 [editable path="Black 2"]
 [editable path="Black 3"]
+[editable path="Black 4"]
+[editable path="Black 5"]
+[editable path="Black 6"]
 [editable path="Blue 1"]
 [editable path="Blue 2"]
 [editable path="Blue 3"]
