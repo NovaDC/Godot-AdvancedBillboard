@@ -16,7 +16,7 @@ mass = 100.0
 physics_material_override = SubResource("PhysicsMaterial_cabou")
 
 [node name="Billboard" type="Sprite3D" parent="."]
-transform = Transform3D(-0.364333, -0.786028, 0.418741, -0.583757, 0.552449, 0.529104, -0.672616, -0.0537, -0.686022, 0, 0, 0)
+transform = Transform3D(0.962249, 0, 0, 0, 0.962249, 0, 0, 0, 0.962248, 0, 0, 0)
 double_sided = false
 alpha_cut = 2
 texture = ExtResource("1_u11fl")

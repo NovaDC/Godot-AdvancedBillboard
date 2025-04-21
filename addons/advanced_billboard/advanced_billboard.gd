@@ -15,7 +15,7 @@ enum LOCK_AXIS_MASK{
 
 ## Enables advanced billboard interactions, when [code]false[/code],
 ## [member Sprite3D.billboard] will be setable again, and act as normal.
-@export var advanced_billboard_enable:bool = true:
+@export var advanced_billboard_enable := true:
 	get:
 		return advanced_billboard_enable
 	set(_value):
@@ -33,9 +33,9 @@ enum LOCK_AXIS_MASK{
 
 ## Update billboard rotation during the physics update instead of the frame update.
 ## This will have no effect in editor, and will always update on frame.
-@export var physics_update:bool = false
+@export var physics_update := false
 ## A array of textures to map to a specific range of rotations in the y axis.[br]
-## Use [member offset_degrees.y] to change where the 0th texture is centered towards.
+## Use [member offset_rotation_degrees.y] to change where the 0th texture is centered towards.
 @export var direction_textures:Array[Texture2D] = []
 ## The radius that this sprite will occlude other 3d objects bedind it.[br]
 ## The occlusion area is a sphere with a radius of [member occlusion_radius].
@@ -45,7 +45,7 @@ enum LOCK_AXIS_MASK{
 ## may result in a loss in performance rather than a gain.
 ## This is only advised to be used when this billboard will remain relatively static,
 ## both in position and rotation.
-@export var occlusion_radius:float = 0:
+@export_range(0.0, INF, 0.00001, "hide_slider") var occlusion_radius:float = 0:
 	get:
 		return occlusion_radius
 	set(_value):
@@ -62,8 +62,14 @@ enum LOCK_AXIS_MASK{
 var _occluder_ref:OccluderInstance3D = null
 
 @export_group("Rotation")
-## Offset the rotation of the billboard from it's [member point_target].
-@export var offset_degrees:Vector3 = Vector3.ZERO
+## Offset the rotation of the billboard from it's [member point_target] in degrees.
+var offset_rotation_degrees:Vector3:
+	get:
+		return Vector3(rad_to_deg(offset_rotation.x), rad_to_deg(offset_rotation.y), rad_to_deg(offset_rotation.z))
+	set(_value):
+		offset_rotation = Vector3(deg_to_rad(_value.x), deg_to_rad(_value.y), deg_to_rad(_value.z))
+@export_custom(PROPERTY_HINT_NONE, "radians_as_degrees")
+var offset_rotation := Vector3.ZERO
 ## The node the billboard should face. When [code]null[/code],
 ## the target will be presumed to be at active camera in the viewport if any,
 ## not changing rotation at all if also null.
@@ -74,14 +80,14 @@ var _occluder_ref:OccluderInstance3D = null
 @export_flags("X:1","Y:2","Z:4") var lock_axis:int = 0
 ## Instead of looking directly at the targeted node's position, face parallel to it,
 ## in the oppsite direction. For more convincing orthographic effects.
-@export var look_parallel:bool = false
+@export var look_parallel := false
 ## Looks to the opposite of the appropriate direction. Usefull when flipping sprites.
-@export var look_opposite:bool = false
+@export var look_opposite := false
 
 @export_subgroup("Editor")
 ## When [code]true[/code] the rotation of the billboard in editor
 ## will differ from the set [member point_target].
-@export var editor_direction_override:bool = true:
+@export var editor_direction_override := true:
 	get:
 		return editor_direction_override
 	set(_value):
@@ -102,6 +108,12 @@ var _occluder_ref:OccluderInstance3D = null
 ## that [Node3D] will be the billboard's target when in editor.
 @export var editor_point_target:Node3D = null
 
+func load_texture_2d_array(array:Texture2DArray):
+	direction_textures = []
+	if array != null:
+		for i in array.get_size():
+			direction_textures.append(array.get_texture(i))
+
 ## Get the texture that will be shown if the billboard's [member Node3D.global_rotation_degrees]
 ## is set to [param rotation_degrees].[br]
 ## Returns [code]null[/code] when not valid texture could be found.
@@ -110,7 +122,7 @@ func get_face_texture(rotation_degrees:Vector3) -> Texture2D:
 		return null
 	
 	var direction_span := 360.0 / direction_textures.size()
-	var direction := wrapf(rotation_degrees.y - offset_degrees.y - direction_span/2, 0, 360)
+	var direction := wrapf(rotation_degrees.y - offset_rotation_degrees.y - direction_span/2, 0, 360)
 	var index := wrapi(floori(direction / direction_span), 0, direction_textures.size()) 
 	
 	return direction_textures[index]
@@ -126,25 +138,25 @@ func _get(property: StringName) -> Variant:
 		return BaseMaterial3D.BillboardMode.BILLBOARD_DISABLED
 	return null
 
-func _ready() -> void:
+func _ready():
 	occlusion_radius = occlusion_radius
 
 func _validate_property(property: Dictionary):
 	match(property.name):
 		"texture", "billboard" when advanced_billboard_enable:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
-		"physics_update", "direction_textures", "offset_degrees", "point_target", "lock_axis", "editor_direction_override", "editor_point_to_camera_viewport_idx", "editor_point_target", "look_parallel" when not advanced_billboard_enable:
+		"physics_update", "direction_textures", "offset_rotation_degrees", "point_target", "lock_axis", "editor_direction_override", "editor_point_to_camera_viewport_idx", "editor_point_target", "look_parallel", "occlusion_radius", "offset_rotation", "look_opposite" when not advanced_billboard_enable:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 		"editor_point_to_camera_viewport_idx", "editor_point_target" when not editor_direction_override:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 		"editor_point_target" when editor_point_to_camera_viewport_idx >= 0:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(_delta: float):
 	if advanced_billboard_enable and physics_update:
 		_billboard_update()
 
-func _process(_delta: float) -> void:
+func _process(_delta: float):
 	if advanced_billboard_enable and not physics_update:
 		_billboard_update()
 
@@ -168,7 +180,7 @@ func get_target_node() -> Node3D:
 func _billboard_update():
 	var current_point_target := get_target_node()
 	var look_point := global_position
-	
+
 	if current_point_target != null:
 		if not look_parallel:
 			look_point = current_point_target.global_position
@@ -184,13 +196,12 @@ func _billboard_update():
 
 		if look_point != global_position:
 			look_at(look_point, Vector3.UP, look_opposite)
-			rotation_degrees += offset_degrees
+			rotation += offset_rotation
 
 	texture = get_face_texture(global_rotation_degrees)
 
-func _exit_tree() -> void:
-	if Engine.is_editor_hint() and editor_direction_override:
-		rotation = Vector3.ZERO
-		# No need to save this if we always automatically change it every save.
-		# Plus it will decrease spamy changed to the rotation of this object that
-		# might show up in version control systems sometimes...
+func _exit_tree():
+	rotation = offset_rotation
+	# No need to save this if we always automatically change it every save.
+	# Plus it will decrease spamy changed to the rotation of this object that
+	# might show up in version control systems sometimes...

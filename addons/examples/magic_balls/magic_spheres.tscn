@@ -47,7 +47,7 @@ size = Vector3(10, 10, 10)
 [sub_resource type="Curve3D" id="Curve3D_x1tpq"]
 closed = true
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -19.594, 47.7729, 156.828, 0, 0, 0, 0, 0, 0, 132.318, 33.3498, 6.52292, 0, 0, 0, 0, 0, 0, -10.3327, 52.5404, -163.437, 0, 0, 0, 0, 0, 0, -157.394, 52.075, -3.60026),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -19.594, 55.2878, 156.828, 0, 0, 0, 0, 0, 0, 147.578, 98.6978, 6.52292, 0, 0, 0, 0, 0, 0, -10.3327, 47.6753, -163.437, 0, 0, 0, 0, 0, 0, -232.361, 33.7329, -3.98572),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
@@ -69,7 +69,7 @@ linear_velocity = Vector3(0.00486625, 3.59178, -0.0114402)
 angular_velocity = Vector3(-0.00461309, 9.12505e-10, -0.00196216)
 
 [node name="Billboard" parent="Black 1" index="0"]
-transform = Transform3D(0.843505, 0.092607, -0.529078, 0, 0.985024, 0.172414, 0.537121, -0.145432, 0.830873, 0, 0, 0)
+transform = Transform3D(0.211534, 0.0499438, -0.976094, 0, 0.998694, 0.0511002, 0.97737, -0.0108094, 0.211258, 0, 0, 0)
 editor_direction_override = false
 
 [node name="Black 2" parent="." instance=ExtResource("1_145le")]
@@ -78,7 +78,7 @@ linear_velocity = Vector3(4.17453e-07, 3.13675e-05, 1.54859e-06)
 angular_velocity = Vector3(-3.11186e-06, 2.77135e-07, 5.76111e-06)
 
 [node name="Billboard" parent="Black 2" index="0"]
-transform = Transform3D(0.849661, 0.0739165, -0.522124, 0, 0.990126, 0.140171, 0.527331, -0.119098, 0.841271, 0, 0, 0)
+transform = Transform3D(0.195244, 0.0246385, -0.980444, 0, 0.999682, 0.025122, 0.980755, -0.00490491, 0.195182, 0, 0, 0)
 editor_direction_override = false
 
 [node name="Black 3" parent="." instance=ExtResource("1_145le")]
@@ -88,7 +88,7 @@ linear_velocity = Vector3(-0.0861222, 7.57128e-05, 0.00136663)
 angular_velocity = Vector3(0.000549598, 0.00844126, 0.0347285)
 
 [node name="Billboard" parent="Black 3" index="0"]
-transform = Transform3D(0.834733, 0.102687, -0.540995, 0, 0.982457, 0.186482, 0.550654, -0.155662, 0.820091, 0, 0, 0)
+transform = Transform3D(0.170629, 0.0526217, -0.983929, 0, 0.998571, 0.053405, 0.985335, -0.00911244, 0.170386, 0, 0, 0)
 editor_direction_override = false
 
 [node name="Black 4" parent="." instance=ExtResource("1_145le")]
@@ -97,7 +97,7 @@ linear_velocity = Vector3(0.00486625, 3.59178, -0.0114402)
 angular_velocity = Vector3(-0.00461309, 9.12505e-10, -0.00196216)
 
 [node name="Billboard" parent="Black 4" index="0"]
-transform = Transform3D(0.89916, 0.0421645, -0.435584, 0, 0.995347, 0.0963496, 0.437619, -0.0866337, 0.894977, 0, 0, 0)
+transform = Transform3D(0.230627, -0.00563364, -0.973026, 0, 0.999983, -0.00578972, 0.973042, 0.00133526, 0.230623, 0, 0, 0)
 editor_direction_override = false
 
 [node name="Black 5" parent="." instance=ExtResource("1_145le")]
@@ -106,7 +106,7 @@ linear_velocity = Vector3(4.17453e-07, 3.13675e-05, 1.54859e-06)
 angular_velocity = Vector3(-3.11186e-06, 2.77135e-07, 5.76111e-06)
 
 [node name="Billboard" parent="Black 5" index="0"]
-transform = Transform3D(0.906883, 0.0239726, -0.420702, 0, 0.99838, 0.05689, 0.421385, -0.0515925, 0.905412, 0, 0, 0)
+transform = Transform3D(0.213461, -0.0350903, -0.976319, 0, 0.999354, -0.0359181, 0.976952, 0.00766713, 0.213323, 0, 0, 0)
 editor_direction_override = false
 
 [node name="Black 6" parent="." instance=ExtResource("1_145le")]
@@ -116,7 +116,7 @@ linear_velocity = Vector3(-0.0861222, 7.57128e-05, 0.00136663)
 angular_velocity = Vector3(0.000549598, 0.00844126, 0.0347285)
 
 [node name="Billboard" parent="Black 6" index="0"]
-transform = Transform3D(0.895654, 0.0470828, -0.442252, 0, 0.994379, 0.105864, 0.444751, -0.094817, 0.890621, 0, 0, 0)
+transform = Transform3D(0.186619, -0.00478818, -0.98242, 0, 0.999986, -0.00487381, 0.982432, 0.000909544, 0.186617, 0, 0, 0)
 editor_direction_override = false
 
 [node name="Blue 1" parent="." instance=ExtResource("1_145le")]
@@ -126,7 +126,7 @@ linear_velocity = Vector3(0, -0.048882, 0)
 angular_velocity = Vector3(5.12628e-19, 0, -8.9487e-12)
 
 [node name="Billboard" parent="Blue 1" index="0"]
-transform = Transform3D(0.686028, 0.0798417, -0.723181, 0, 0.99396, 0.109737, 0.727575, -0.0752825, 0.681885, 0, 0, 0)
+transform = Transform3D(0.0297283, -0.00420444, -0.99955, 0, 0.999989, -0.00420631, 0.999557, 0.000125046, 0.029728, 0, 0, 0)
 texture = ExtResource("2_ll74a")
 direction_textures = Array[Texture2D]([ExtResource("2_ll74a")])
 editor_direction_override = false
@@ -138,7 +138,7 @@ linear_velocity = Vector3(0, -1.18184, 0)
 angular_velocity = Vector3(6.35622e-19, 0, -1.10957e-11)
 
 [node name="Billboard" parent="Blue 2" index="0"]
-transform = Transform3D(0.654303, 0.11942, -0.746742, 0, 0.987453, 0.157914, 0.75623, -0.103324, 0.646094, 0, 0, 0)
+transform = Transform3D(-0.00834781, 0.0179617, -0.999803, 0, 0.999839, 0.0179623, 0.999964, 0.000149946, -0.00834646, 0, 0, 0)
 texture = ExtResource("2_ll74a")
 direction_textures = Array[Texture2D]([ExtResource("2_ll74a")])
 editor_direction_override = false
@@ -150,7 +150,7 @@ linear_velocity = Vector3(0, 0.113933, 0)
 angular_velocity = Vector3(5.40101e-19, 0, -9.4282e-12)
 
 [node name="Billboard" parent="Blue 3" index="0"]
-transform = Transform3D(0.73094, 0.0568915, -0.680064, 0, 0.99652, 0.0833646, 0.68244, -0.0609348, 0.728396, 0, 0, 0)
+transform = Transform3D(0.0718437, -0.0169364, -0.997272, 0, 0.999857, -0.0169803, 0.997415, 0.00121993, 0.0718334, 0, 0, 0)
 texture = ExtResource("2_ll74a")
 direction_textures = Array[Texture2D]([ExtResource("2_ll74a")])
 editor_direction_override = false
@@ -234,8 +234,8 @@ transform = Transform3D(-8.74228e-07, 20, -8.74228e-07, 0, -8.74228e-07, -20, -2
 curve = SubResource("Curve3D_x1tpq")
 
 [node name="Dolly" type="PathFollow3D" parent="CamRail" node_paths=PackedStringArray("focus")]
-transform = Transform3D(0.724017, 0.268328, -0.635212, 0, 0.921027, 0.389076, 0.689559, -0.281736, 0.666954, -81.1314, 49.6941, 85.1855)
-progress = 771.173
+transform = Transform3D(0.0402917, 0.161893, -0.985832, 0, 0.986618, 0.162028, 0.999032, -0.00652927, 0.0397594, -215.584, 35.4325, 8.69466)
+progress = 761.306
 rotation_mode = 0
 tilt_enabled = false
 script = ExtResource("4_5vgls")
