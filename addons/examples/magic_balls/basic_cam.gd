@@ -31,3 +31,9 @@ func _physics_process(delta: float) -> void:
 	var tilt := (mouse_position) * sensitivity
 	rotation.x = -tilt.y + init_rotation.x
 	rotation.y = tilt.x + init_rotation.y
+
+func _notification(what:int) -> void:
+	match what:
+		NOTIFICATION_EDITOR_PRE_SAVE:
+			global_position = Vector3.ZERO
+			global_rotation = Vector3.ZERO
