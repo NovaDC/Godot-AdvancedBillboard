@@ -1,11 +1,11 @@
 @tool
-@icon("res://addons/advanced_billboard/advanced_billboard.svg")
-class_name AdvancedBillboard
+@icon("./advanced_billboard_3d.svg")
+class_name AdvancedBillboard3D
 extends Sprite3D
 
-## AdvancedBillboard
+## AdvancedBillboard3D
 ##
-## [AdvancedBillboard] allows for more advanced Y axis billboarding in 3d space.
+## [AdvancedBillboard3D] allows for more advanced Y axis billboarding in 3d space.
 
 enum LOCK_AXIS_MASK{
 	X = 0b001, ## The global [code]x[/code] axis.
@@ -62,14 +62,18 @@ enum LOCK_AXIS_MASK{
 var _occluder_ref:OccluderInstance3D = null
 
 @export_group("Rotation")
+## Offset the rotation of the billboard from it's [member point_target] in radians.
+@export_custom(PROPERTY_HINT_NONE, "radians_as_degrees")
+var offset_rotation := Vector3.ZERO
 ## Offset the rotation of the billboard from it's [member point_target] in degrees.
 var offset_rotation_degrees:Vector3:
 	get:
-		return Vector3(rad_to_deg(offset_rotation.x), rad_to_deg(offset_rotation.y), rad_to_deg(offset_rotation.z))
+		return Vector3(rad_to_deg(offset_rotation.x),
+						rad_to_deg(offset_rotation.y),
+						rad_to_deg(offset_rotation.z)
+						)
 	set(_value):
 		offset_rotation = Vector3(deg_to_rad(_value.x), deg_to_rad(_value.y), deg_to_rad(_value.z))
-@export_custom(PROPERTY_HINT_NONE, "radians_as_degrees")
-var offset_rotation := Vector3.ZERO
 ## The node the billboard should face. When [code]null[/code],
 ## the target will be presumed to be at active camera in the viewport if any,
 ## not changing rotation at all if also null.
@@ -108,23 +112,27 @@ var offset_rotation := Vector3.ZERO
 ## that [Node3D] will be the billboard's target when in editor.
 @export var editor_point_target:Node3D = null
 
-func load_texture_2d_array(array:Texture2DArray):
-	direction_textures = []
-	if array != null:
-		for i in array.get_size():
-			direction_textures.append(array.get_texture(i))
+## Load a [Texture2DArray] as the [member direction_textures].
+func load_texture_2d_array(array:Texture2DArray) -> void:
+	direction_textures = Array()
+	if array == null:
+		return
+	var s:int = array.get_size()
+	direction_textures.resize(s)
+	for i in range(s):
+		direction_textures[i] = array.get_texture(i)
 
 ## Get the texture that will be shown if the billboard's [member Node3D.global_rotation_degrees]
-## is set to [param rotation_degrees].[br]
+## is set to [param rot].[br]
 ## Returns [code]null[/code] when not valid texture could be found.
-func get_face_texture(rotation_degrees:Vector3) -> Texture2D:
+func get_face_texture(rot:Vector3) -> Texture2D:
 	if direction_textures.size() <= 0:
 		return null
-	
-	var direction_span := 360.0 / direction_textures.size()
-	var direction := wrapf(rotation_degrees.y - offset_rotation_degrees.y - direction_span/2, 0, 360)
-	var index := wrapi(floori(direction / direction_span), 0, direction_textures.size()) 
-	
+
+	var direction_span := TAU / direction_textures.size()
+	var direction := wrapf(rot.y - offset_rotation.y - direction_span/2, 0, TAU)
+	var index := wrapi(floori(direction / direction_span), 0, direction_textures.size())
+
 	return direction_textures[index]
 
 func _set(property: StringName, _value:Variant) -> bool:
@@ -138,25 +146,25 @@ func _get(property: StringName) -> Variant:
 		return BaseMaterial3D.BillboardMode.BILLBOARD_DISABLED
 	return null
 
-func _ready():
+func _ready() -> void:
 	occlusion_radius = occlusion_radius
 
-func _validate_property(property: Dictionary):
+func _validate_property(property: Dictionary) -> void:
 	match(property.name):
 		"texture", "billboard" when advanced_billboard_enable:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
-		"physics_update", "direction_textures", "offset_rotation_degrees", "point_target", "lock_axis", "editor_direction_override", "editor_point_to_camera_viewport_idx", "editor_point_target", "look_parallel", "occlusion_radius", "offset_rotation", "look_opposite" when not advanced_billboard_enable:
+		"physics_update", "direction_textures", "point_target", "lock_axis", "editor_direction_override", "editor_point_to_camera_viewport_idx", "editor_point_target", "look_parallel", "occlusion_radius", "offset_rotation", "look_opposite" when not advanced_billboard_enable:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 		"editor_point_to_camera_viewport_idx", "editor_point_target" when not editor_direction_override:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 		"editor_point_target" when editor_point_to_camera_viewport_idx >= 0:
 			property.usage = PROPERTY_USAGE_NO_EDITOR
 
-func _physics_process(_delta: float):
+func _physics_process(_delta: float) -> void:
 	if advanced_billboard_enable and physics_update:
 		_billboard_update()
 
-func _process(_delta: float):
+func _process(_delta: float) -> void:
 	if advanced_billboard_enable and not physics_update:
 		_billboard_update()
 
@@ -177,7 +185,7 @@ func get_target_node() -> Node3D:
 
 # Update the billboard's rotation and texture, called internally by either
 # [member Node._process] or [member Node._physics_process].
-func _billboard_update():
+func _billboard_update() -> void:
 	var current_point_target := get_target_node()
 	var look_point := global_position
 
@@ -200,8 +208,12 @@ func _billboard_update():
 
 	texture = get_face_texture(global_rotation_degrees)
 
-func _exit_tree():
-	rotation = offset_rotation
-	# No need to save this if we always automatically change it every save.
-	# Plus it will decrease spamy changed to the rotation of this object that
-	# might show up in version control systems sometimes...
+func _notification(what:int) -> void:
+	match what:
+		NOTIFICATION_EDITOR_PRE_SAVE when advanced_billboard_enable:
+			# No need to save this if we always automatically change it every save.
+			# Plus it will decrease spamy changes to the rotation of this object that
+			# might show up in version control systems sometimes...
+
+			# Also snap it to stop imprecision also causing diff spam
+			global_rotation = offset_rotation.snappedf(1.0)

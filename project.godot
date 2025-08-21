@@ -11,15 +11,18 @@ config_version=5
 [application]
 
 config/name="Advanced Billboard"
-config/description="AdvancedBillboard allows for more advanced Y axis billboarding in 3d space"
 config/version="1.0.0.0"
+config/description="AdvancedBillboard allows for more advanced billboarding in godot."
 run/main_scene="res://addons/examples/magic_balls/magic_spheres.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/bg_color=Color(0.552941, 0.647059, 0.952941, 1)
+boot_splash/image="uid://dudc1d3816ukv"
 config/icon="res://addons/advanced_billboard/advanced_billboard.png"
+boot_splash/minimum_display_time=10
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/advanced_billboard/plugin.cfg")
 
 [rendering]
 

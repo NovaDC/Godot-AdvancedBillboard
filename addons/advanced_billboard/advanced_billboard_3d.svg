@@ -7,98 +7,32 @@
    viewBox="0 0 16 16"
    version="1.1"
    id="svg1"
-   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
-   sodipodi:docname="Advanced Billboard.svg"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview1"
-     pagecolor="#505050"
-     bordercolor="#eeeeee"
-     borderopacity="1"
-     inkscape:showpageshadow="0"
-     inkscape:pageopacity="0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#505050"
-     inkscape:document-units="px"
-     inkscape:zoom="35.355339"
-     inkscape:cx="7.8064589"
-     inkscape:cy="8.7398398"
-     inkscape:window-width="1920"
-     inkscape:window-height="1009"
-     inkscape:window-x="-8"
-     inkscape:window-y="329"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg1" />
   <defs
      id="defs1">
     <linearGradient
-       id="swatch17"
-       inkscape:swatch="solid">
+       id="swatch17">
       <stop
          style="stop-color:#000000;stop-opacity:1;"
          offset="0"
          id="stop17" />
     </linearGradient>
-    <inkscape:path-effect
-       effect="perspective-envelope"
-       up_left_point="2.9,0"
-       up_right_point="14.9,3.6"
-       down_left_point="-0.5,13.9"
-       down_right_point="7.5,16.8"
-       id="path-effect12"
-       is_visible="true"
-       lpeversion="1"
-       deform_type="perspective"
-       horizontal_mirror="false"
-       vertical_mirror="false"
-       overflow_perspective="false" />
-    <inkscape:path-effect
-       effect="perspective-envelope"
-       up_left_point="13.08,-1.7856436"
-       up_right_point="27.079965,-1.7856436"
-       down_left_point="13.079965,12.214356"
-       down_right_point="27.079965,12.214356"
-       id="path-effect11"
-       is_visible="true"
-       lpeversion="1"
-       deform_type="perspective"
-       horizontal_mirror="false"
-       vertical_mirror="false"
-       overflow_perspective="false" />
-    <inkscape:path-effect
-       effect="perspective-envelope"
-       up_left_point="5,0"
-       up_right_point="21,0"
-       down_left_point="0,16"
-       down_right_point="16,16"
-       id="path-effect1"
-       is_visible="true"
-       lpeversion="1"
-       deform_type="perspective"
-       horizontal_mirror="false"
-       vertical_mirror="false"
-       overflow_perspective="false" />
   </defs>
   <path
      style="fill:#000000;fill-opacity:0.99484539;stroke:none;stroke-width:0.965;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
      d="m 13.216224,13.216224 -2.383348,-2.241927 1.046518,-3.0829853 2.33683,2.3249123 z"
-     id="path19"
-     sodipodi:nodetypes="ccccc"
-     inkscape:label="path19" />
+     id="path19" />
   <path
      fill="#fc7f7f"
-     d="m 11.677509,0 a 3.0416313,4.8971777 27.231334 0 1 1.94729,4.5714286 l -1.96662,6.8571424 A 3.0416313,4.8971777 27.231334 0 1 7.0887267,16 H 2.2011714 A 3.0416313,4.8971777 27.231334 0 1 0.25388098,11.428571 L 2.2205011,4.5714286 A 3.0416313,4.8971777 27.231334 0 1 6.7899521,0 Z m -0.337436,6.8571429 a 0.76040823,1.2242952 27.231318 0 0 -1.629186,0 L 9.0553466,9.1428571 a 0.76040836,1.2242954 27.231318 0 0 1.6291864,0 z M 2.5386057,9.1428571 a 0.7604081,1.2242949 27.231328 0 0 1.6291858,0 L 4.8233319,6.8571429 a 0.76040809,1.2242949 27.231328 0 0 -1.6291858,0 z m 0.514591,4.3748569 a 3.0416313,4.8971777 27.231334 0 0 4.6073363,0 0.7604078,1.2242944 27.231332 0 0 -0.6883672,-1.616 1.5208157,2.4485889 27.231332 0 1 -2.3036683,0 0.7604078,1.2242944 27.231332 0 0 -1.6153008,1.616 z"
+     d="m 11.677509,0 c 1.799548,3.1782521e-7 2.67138,2.0466985 1.94729,4.5714286 l -1.96662,6.8571424 C 10.934089,13.953302 8.8882755,16.000001 7.0887267,16 H 2.2011714 C 0.40162274,16 -0.47020892,13.953302 0.25388098,11.428571 L 2.2205011,4.5714286 C 2.9445907,2.0466983 4.9904036,2.4105685e-8 6.7899521,0 Z"
      id="path1"
-     style="stroke-width:0.965;stroke:none;stroke-opacity:1;stroke-dasharray:none" />
+     style="stroke:none;stroke-width:0.965;stroke-dasharray:none;stroke-opacity:1" />
   <path
      id="rect7"
      style="display:inline;fill:#fc7f7f;stroke:none;stroke-width:2.54776;stroke-linejoin:round;paint-order:stroke fill markers"
      transform="matrix(0.98868611,-0.14999928,0.58844446,0.80853764,0,0)"
-     d="m 2.961212,15.705809 2.9558766,-3.266976 0.701768,3.630702 -2.6516774,4.455266 z"
-     sodipodi:nodetypes="ccccc" />
+     d="m 2.961212,15.705809 2.9558766,-3.266976 0.701768,3.630702 -2.6516774,4.455266 z" />
   <path
      style="fill:#000000;fill-opacity:1;stroke-width:0.042879;stroke-linejoin:round;paint-order:stroke fill markers"
      d="M 2.7930024,10.210265 C 2.584334,10.096953 2.4703397,9.8168254 2.4962097,9.4809327 2.5170714,9.2100661 3.1956006,6.8454824 3.3383679,6.5461234 3.5604445,6.0804664 3.9771304,5.7417071 4.3278284,5.7417071 c 0.3584387,0 0.5584185,0.2935232 0.5299334,0.7778174 -0.018362,0.3121928 -0.673612,2.600851 -0.845332,2.952579 -0.1379014,0.2824583 -0.4371686,0.6047295 -0.6603346,0.7110915 -0.1923727,0.09169 -0.4198205,0.102699 -0.5590928,0.02707 z"

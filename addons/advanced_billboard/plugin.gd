@@ -3,7 +3,7 @@ extends EditorPlugin
 
 const PLUGIN_NAME := "AdvancedBillboard"
 
-const PLUGIN_ICON := preload("res://addons/advanced_billboard/advanced_billboard.svg")
+const PLUGIN_ICON := preload("./advanced_billboard_3d.svg")
 
 func _get_plugin_name() -> String:
 	return PLUGIN_NAME
