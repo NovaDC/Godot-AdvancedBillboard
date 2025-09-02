@@ -100,11 +100,11 @@ func get_face_texture(rot:float) -> Texture2D:
 func _validate_property(property: Dictionary) -> void:
 	match(property.name):
 		"texture" when advanced_billboard_enable:
-			property.usage = PROPERTY_USAGE_NO_EDITOR
+			property.usage &= ~PROPERTY_USAGE_EDITOR
 		"physics_update", "direction_textures", "offset_rotation", "automatic_rotation" when not advanced_billboard_enable:
-			property.usage = PROPERTY_USAGE_NO_EDITOR
+			property.usage &= ~PROPERTY_USAGE_EDITOR
 		"manual_rotation_z" when automatic_rotation or not advanced_billboard_enable:
-			property.usage = PROPERTY_USAGE_NO_EDITOR
+			property.usage &= ~PROPERTY_USAGE_EDITOR
 
 func _physics_process(_delta: float) -> void:
 	if advanced_billboard_enable and physics_update:

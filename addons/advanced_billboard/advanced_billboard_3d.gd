@@ -7,7 +7,9 @@ extends Sprite3D
 ##
 ## [AdvancedBillboard3D] allows for more advanced Y axis billboarding in 3d space.
 
-enum LOCK_AXIS_MASK{
+## Bitmasks used with [member lock_axis] to determine what axises are masked.
+## Note that these are masks and [i]not[/i] bit offsets.
+enum LockAxisMask{
 	X = 0b001, ## The global [code]x[/code] axis.
 	Y = 0b010, ## The global [code]y[/code] axis.
 	Z = 0b100  ## The global [code]z[/code] axis.
@@ -32,7 +34,7 @@ enum LOCK_AXIS_MASK{
 		notify_property_list_changed()
 
 ## Update billboard rotation during the physics update instead of the frame update.
-## This will have no effect in editor, and will always update on frame.
+## However, this will have no effect in editor.
 @export var physics_update := false
 ## A array of textures to map to a specific range of rotations in the y axis.[br]
 ## Use [member offset_rotation_degrees.y] to change where the 0th texture is centered towards.
@@ -78,7 +80,7 @@ var offset_rotation_degrees:Vector3:
 ## the target will be presumed to be at active camera in the viewport if any,
 ## not changing rotation at all if also null.
 @export var point_target:Node3D = null
-## A bitset (with each bit's place value corelating to [enum LOCK_AXIS_MASK])
+## A bitset (with each bit's place value corelating to [enum LockAxisMask])
 ## that when set will force that axis of rotation of the billboard to snap parallel
 ## to the global axises.
 @export_flags("X:1","Y:2","Z:4") var lock_axis:int = 0
@@ -152,13 +154,13 @@ func _ready() -> void:
 func _validate_property(property: Dictionary) -> void:
 	match(property.name):
 		"texture", "billboard" when advanced_billboard_enable:
-			property.usage = PROPERTY_USAGE_NO_EDITOR
+			property.usage &= ~PROPERTY_USAGE_EDITOR
 		"physics_update", "direction_textures", "point_target", "lock_axis", "editor_direction_override", "editor_point_to_camera_viewport_idx", "editor_point_target", "look_parallel", "occlusion_radius", "offset_rotation", "look_opposite" when not advanced_billboard_enable:
-			property.usage = PROPERTY_USAGE_NO_EDITOR
+			property.usage &= ~PROPERTY_USAGE_EDITOR
 		"editor_point_to_camera_viewport_idx", "editor_point_target" when not editor_direction_override:
-			property.usage = PROPERTY_USAGE_NO_EDITOR
+			property.usage &= ~PROPERTY_USAGE_EDITOR
 		"editor_point_target" when editor_point_to_camera_viewport_idx >= 0:
-			property.usage = PROPERTY_USAGE_NO_EDITOR
+			property.usage &= ~PROPERTY_USAGE_EDITOR
 
 func _physics_process(_delta: float) -> void:
 	if advanced_billboard_enable and physics_update:
@@ -169,7 +171,11 @@ func _process(_delta: float) -> void:
 		_billboard_update()
 
 ## Returns a [Node3D] (if any) that this billboard would use
-## when determining where to face, if any.
+## when determining where to face, if any.[br]
+## For example (though not an extensive one),
+## when [member point_target] is not [code]null[/code],
+## this returns [member point_target]; and when it is, it returns
+## the current [method Viewport.get_camera_3d].
 func get_target_node() -> Node3D:
 	if Engine.is_editor_hint() and editor_direction_override:
 		if editor_point_to_camera_viewport_idx >= 0:
@@ -195,11 +201,11 @@ func _billboard_update() -> void:
 		else:
 			look_point = global_position + (current_point_target.transform.basis.z)
 
-		if (lock_axis & LOCK_AXIS_MASK.X > 0):
+		if (lock_axis & LockAxisMask.X > 0):
 			look_point.x = global_position.x
-		if (lock_axis & LOCK_AXIS_MASK.Y > 0):
+		if (lock_axis & LockAxisMask.Y > 0):
 			look_point.y = global_position.y
-		if (lock_axis & LOCK_AXIS_MASK.Z > 0):
+		if (lock_axis & LockAxisMask.Z > 0):
 			look_point.z = global_position.z
 
 		if look_point != global_position:
