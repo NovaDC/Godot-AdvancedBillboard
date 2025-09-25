@@ -4,20 +4,22 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dx0e8iqikcryf"
-path="res://.godot/imported/welcometothe21stcentury.gltf-10bde4de283c73549148f6eed813b0ba.scn"
+path="res://.godot/imported/welcometothe21stcentury.gltf-1d7e0693916d0b1b6d3bd50e790a7276.scn"
 
 [deps]
 
-source_file="res://addons/examples/magic_balls/welcometothe21stcentury.gltf"
-dest_files=["res://.godot/imported/welcometothe21stcentury.gltf-10bde4de283c73549148f6eed813b0ba.scn"]
+source_file="res://examples/advanced_billboard/magic_balls/welcometothe21stcentury.gltf"
+dest_files=["res://.godot/imported/welcometothe21stcentury.gltf-1d7e0693916d0b1b6d3bd50e790a7276.scn"]
 
 [params]
 
 nodes/root_type=""
 nodes/root_name=""
+nodes/root_script=null
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -32,6 +34,9 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
 _subresources={
 "nodes": {
 "PATH:Text": {
