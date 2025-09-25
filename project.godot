@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Advanced Billboard"
-config/description="AdvancedBillboard allows for more advanced billboarding in godot."
-config/version="1.1.0.1"
+config/description="AdvancedBillboard allows for more advanced Y axis billboarding in 3d and 2d space."
+config/version="1.2.0.0"
 config/tags=PackedStringArray("archived", "tool")
 run/main_scene="uid://b8qljmt2uvrno"
 config/features=PackedStringArray("4.5", "GL Compatibility")
