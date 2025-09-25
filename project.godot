@@ -20,6 +20,12 @@ boot_splash/image="uid://dudc1d3816ukv"
 config/icon="res://addons/advanced_billboard/advanced_billboard.png"
 boot_splash/minimum_display_time=10
 
+[editor]
+
+movie_writer/ogv/audio_quality=1.0
+movie_writer/ogv/encoding_speed=1
+movie_writer/movie_file="C:/Users/M6_16/source/Godot-AdvancedBillboard/demo.avi"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/advanced_billboard/plugin.cfg")
