@@ -68,7 +68,7 @@ var manual_rotation_z_degrees:float = 0.0:
 	set(_value):
 		manual_rotation_z = deg_to_rad(_value)
 
-## Returns the rotation to use when selecting a texture to display.
+## Returns the rotation (in radians) to use when selecting a texture to display.
 func get_relevant_rotation() -> float:
 	if automatic_rotation:
 		return global_rotation
@@ -84,7 +84,7 @@ func load_texture_2d_array(array:Texture2DArray) -> void:
 	for i in range(s):
 		direction_textures[i] = array.get_texture(i)
 
-## Get the texture that will be shown if the billboard's [member Node3D.global_rotation_degrees]
+## Get the texture that will be shown if the billboard's [member Node2D.global_rotation]
 ## is set to [param rotation_degrees].[br]
 ## Returns [code]null[/code] when not valid texture could be found.
 func get_face_texture(rot:float) -> Texture2D:

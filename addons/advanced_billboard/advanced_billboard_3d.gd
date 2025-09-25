@@ -124,7 +124,7 @@ func load_texture_2d_array(array:Texture2DArray) -> void:
 	for i in range(s):
 		direction_textures[i] = array.get_texture(i)
 
-## Get the texture that will be shown if the billboard's [member Node3D.global_rotation_degrees]
+## Get the texture that will be shown if the billboard's [member Node3D.global_rotation]
 ## is set to [param rot].[br]
 ## Returns [code]null[/code] when not valid texture could be found.
 func get_face_texture(rot:Vector3) -> Texture2D:
@@ -212,7 +212,7 @@ func _billboard_update() -> void:
 			look_at(look_point, Vector3.UP, look_opposite)
 			rotation += offset_rotation
 
-	texture = get_face_texture(global_rotation_degrees)
+	texture = get_face_texture(global_rotation)
 
 func _notification(what:int) -> void:
 	match what:
